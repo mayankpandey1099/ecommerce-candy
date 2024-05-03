@@ -1,25 +1,21 @@
 import React, { createContext, useState, useMemo } from "react";
 
-export const CandyContext = createContext();
+export const CartContext = createContext();
 
-export const CandyProvider = ({ children }) => {
-  const [candies, setCandies] = useState([]);
+export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
-  const addCandy = (candy) => {
-    setCandies([...candies, candy]);
-  };
 
-  const addToCart = (candy, quantity) => {
+  const addToCart = (product, quantity) => {
     const existingItemIndex = cart.findIndex(
-      (item) => item.name === candy.name
+      (item) => item.name === product.name
     );
     if (existingItemIndex !== -1) {
       const updatedCart = [...cart];
       updatedCart[existingItemIndex].quantity += quantity;
       setCart(updatedCart);
     } else {
-      const item = { ...candy, quantity };
+      const item = { ...product, quantity };
       setCart([...cart, item]);
     }
   };
@@ -30,10 +26,10 @@ export const CandyProvider = ({ children }) => {
 
 
   return (
-    <CandyContext.Provider
-      value={{ candies, cart, addCandy, addToCart, totalProductsInCart}}
+    <CartContext.Provider
+      value={{cart, addToCart, totalProductsInCart}}
     >
       {children}
-    </CandyContext.Provider>
+    </CartContext.Provider>
   );
 };
