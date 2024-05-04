@@ -8,9 +8,6 @@ import Header from "./Header";
 import Footer from "./Footer";
 
 const App = () => {
-
-  const [showCart , setShowCart] = useState(false);
-
   return (
     <CartProvider>
         <div className="container">

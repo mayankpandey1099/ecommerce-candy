@@ -8,7 +8,7 @@ export const CartProvider = ({ children }) => {
 
   const addToCart = (product, quantity) => {
     const existingItemIndex = cart.findIndex(
-      (item) => item.name === product.name
+      (item) => item.id === product.id
     );
     if (existingItemIndex !== -1) {
       const updatedCart = [...cart];
@@ -20,6 +20,28 @@ export const CartProvider = ({ children }) => {
     }
   };
 
+  const decreaseQuantity = (index) => {
+    const updatedCart = [...cart];
+    if (updatedCart[index].quantity > 1) {
+      updatedCart[index].quantity -= 1;
+      setCart(updatedCart);
+    } else {
+      // If quantity is 1, remove the item from the cart
+      updatedCart.splice(index, 1);
+      setCart(updatedCart);
+    }
+  };
+
+  const increaseQuantity = (index) => {
+    const updatedCart = [...cart];
+    updatedCart[index].quantity += 1;
+    setCart(updatedCart);
+  };
+
+  const emptyCart = () => {
+    setCart([]);
+  };
+
   const totalProductsInCart = useMemo(() => {
     return cart.reduce((total, item) => total + item.quantity, 0);
   }, [cart]);
@@ -27,7 +49,7 @@ export const CartProvider = ({ children }) => {
 
   return (
     <CartContext.Provider
-      value={{cart, addToCart, totalProductsInCart}}
+      value={{cart, addToCart, totalProductsInCart, decreaseQuantity, increaseQuantity, emptyCart}}
     >
       {children}
     </CartContext.Provider>
