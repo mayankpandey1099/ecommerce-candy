@@ -23,50 +23,42 @@ const ShoppingCart = () => {
     }
   };
   return (
-    <div className="text-center">
-      <h2 className="text-2xl font-bold mb-4">Cart</h2>
-      <div className="flex justify-center mb-4">
-        <div className="w-1/4">Item</div>
-        <div className="w-1/4">Price</div>
-        <div className="w-1/4">Quantity</div>
+    <div>
+      <h2>Cart</h2>
+      <div>
+        <div>Item</div>
+        <div>Price</div>
+        <div>Quantity</div>
       </div>
       {cart.map((item, index) => (
-        <div key={index} className="flex justify-center items-center mb-4">
-          <div className="w-1/4">
+        <div key={index}>
+          <div>
             <img
               src={item.imageUrl}
               alt="img"
-              className="w-40 mb-2 mx-auto"
             />
-            <h2 className="text-lg font-semibold text-center">{item.title}</h2>
+            <h2>{item.title}</h2>
           </div>
-          <div className="w-1/4">₹ {item.price}</div>
-          <div className="w-1/4">
+          <div>₹ {item.price}</div>
+          <div>
             <button
               onClick={() => decreaseQuantity(index)}
-              className="bg-blue-500 text-white px-2 py-1 rounded"
             >
               -
             </button>
-            <span className="mx-2">{item.quantity}</span>
+            <span>{item.quantity}</span>
             <button
               onClick={() => increaseQuantity(index)}
-              className="bg-blue-500 text-white px-2 py-1 rounded"
             >
               +
             </button>
           </div>
         </div>
       ))}
-      <div className="text-right mt-4">
+      <div>
         Total Products: {totalProductsInCart}
       </div>
-      <button
-        onClick={handlePurchase}
-        className="bg-green-500 text-white px-4 py-2 rounded mt-4"
-      >
-        Purchase
-      </button>
+      <button onClick={handlePurchase}>Purchase</button>
     </div>
   );
 };
