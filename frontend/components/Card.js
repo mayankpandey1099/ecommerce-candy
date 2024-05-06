@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext} from "react";
 import { CartContext } from "./CartContext";
 
 const productsArr = [
@@ -61,16 +61,8 @@ const productsArr = [
 const Card = () => {
   const { addToCart } = useContext(CartContext);
 
-  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-
-  const handleAddToCart = (item) => {
-    addToCart(item, 1);
-    setShowSuccessMessage(true);
-    setTimeout(() => setShowSuccessMessage(false), 2000); // Close message after 2 seconds
-  };
-
   return (
-  <div className="container mx-auto px-8 py-8 max-w-4xl overflow-y-scroll h-120 bg-gray-300">
+  <div className="container mx-auto px-8 py-8 max-w-3xl overflow-y-scroll h-120 bg-gray-300">
     <div className="grid grid-cols-2 gap-4">
       {productsArr.map((item) => (
         <div key={item.id} className="p-4 bg-white rounded shadow-md">
@@ -78,7 +70,7 @@ const Card = () => {
           <h2 className="text-xl font-bold mt-2">{item.title}</h2>
           <h3 className="text-lg font-semibold">₹ {item.price}</h3>
           <button
-            onClick={() => handleAddToCart(item)}
+            onClick={() => addToCart(item, 1)}
             className="mt-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
           >
             Add to Cart
@@ -86,11 +78,6 @@ const Card = () => {
         </div>
       ))}
     </div>
-    {showSuccessMessage && (
-      <div className="mt-4 bg-green-200 text-green-800 p-2 rounded">
-        Product added successfully!
-      </div>
-    )}
   </div>
 );
 }

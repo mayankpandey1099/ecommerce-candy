@@ -4,6 +4,7 @@ export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
 
   const addToCart = (product, quantity) => {
@@ -18,6 +19,8 @@ export const CartProvider = ({ children }) => {
       const item = { ...product, quantity };
       setCart([...cart, item]);
     }
+    setShowSuccessMessage(true);
+    setTimeout(() => setShowSuccessMessage(false), 2000);
   };
 
   const decreaseQuantity = (index) => {
@@ -49,7 +52,15 @@ export const CartProvider = ({ children }) => {
 
   return (
     <CartContext.Provider
-      value={{cart, addToCart, totalProductsInCart, decreaseQuantity, increaseQuantity, emptyCart}}
+      value={{
+        cart,
+        addToCart,
+        totalProductsInCart,
+        decreaseQuantity,
+        increaseQuantity,
+        emptyCart,
+        showSuccessMessage
+      }}
     >
       {children}
     </CartContext.Provider>

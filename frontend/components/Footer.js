@@ -6,7 +6,10 @@ const Footer = () => {
       fontFamily: "Montserrat, sans-serif", // Change the font family as per your preference
     };
   return (
-    <div className="bg-gray-800 text-white py-4 text-center" style={linkStyle}>
+    <div
+      className="bg-gray-800 text-white py-2 text-center bottom-0 w-full"
+      style={linkStyle}
+    >
       <p className="text-xl font-bold" style={linkStyle}>
         &copy; 2024 The Generics
       </p>

@@ -22,7 +22,7 @@ const Header = () => {
         </li>
         <li>
           <Link to="/ContactUs" style={linkStyle}>
-            Contact Us
+            CONTACT US
           </Link>
         </li>
         <li>
