@@ -62,7 +62,7 @@ const Card = () => {
   const { addToCart } = useContext(CartContext);
 
   return (
-  <div className="container mx-auto px-8 py-8 max-w-3xl overflow-y-scroll h-120 bg-gray-300">
+  <div className="container mx-auto px-8 py-8 max-w-3xl h-120 bg-gray-300">
     <div className="grid grid-cols-2 gap-4">
       {productsArr.map((item) => (
         <div key={item.id} className="p-4 bg-white rounded shadow-md">

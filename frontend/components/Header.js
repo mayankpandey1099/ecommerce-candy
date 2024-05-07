@@ -16,7 +16,7 @@ const Header = () => {
     <div className="flex justify-between items-center px-8 py-8 bg-gray-800 text-white">
       <div className="flex gap-20 mx-auto" style={ulStyle}>
         <li>
-          <Link to="/" style={linkStyle}>
+          <Link to="/home" style={linkStyle}>
             HOME
           </Link>
         </li>

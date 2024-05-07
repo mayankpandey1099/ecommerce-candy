@@ -5,6 +5,7 @@ export const CartContext = createContext();
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [authenticated, setAuthenticated] = useState(false);
 
 
   const addToCart = (product, quantity) => {
@@ -59,7 +60,9 @@ export const CartProvider = ({ children }) => {
         decreaseQuantity,
         increaseQuantity,
         emptyCart,
-        showSuccessMessage
+        showSuccessMessage,
+        authenticated,
+        setAuthenticated
       }}
     >
       {children}
